@@ -1,4 +1,4 @@
-const crypto = require('crypto');
+const sha1 = require('sha1');
 const dbClient = require('../utils/db');
 
 class UsersController {
@@ -32,7 +32,7 @@ class UsersController {
       });
     }
     // hash password
-    const hashedPassword = crypto.createHash('sha1').update(password).digest('hex');
+    const hashedPassword = sha1(password);
 
     // Create the user object with hashed password
     const newUser = {
